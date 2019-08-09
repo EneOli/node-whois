@@ -1,37 +1,35 @@
 {
-  "name": "whois",
-  "version": "2.10.1",
-  "description": "A WHOIS client for NodeJS",
+  "name": "whois-promises",
+  "version": "1.0.0",
+  "description": "A WHOIS client for NodeJS using Promises",
   "main": "index.js",
   "bin": {
     "whois": "index.js"
   },
   "scripts": {
-    "prepare": "make",
-    "test": "make test"
+    "build": "tsc",
+    "test": "echo TODO && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hjr265/node-whois"
+    "url": "git://github.com/eneoli/node-whois"
   },
   "keywords": [
     "whois"
   ],
-  "author": "Mahmud Ridwan <m@hjr265.me>",
+  "author": "Mahmud Ridwan <m@hjr265.me>, Oliver Enes <oliver@enesnet.de>",
   "license": "FreeBSD",
   "bugs": {
-    "url": "https://github.com/hjr265/node-whois/issues"
+    "url": "https://github.com/eneoli/node-whois/issues"
   },
-  "homepage": "https://github.com/hjr265/node-whois",
+  "homepage": "https://enesnet.de",
   "devDependencies": {
-    "coffee-script": "^1.6.3",
-    "mocha": "^5.2.0"
-  },
-  "dependencies": {
     "@types/node": "^12.7.1",
     "@types/optimist": "0.0.29",
     "@types/punycode": "^2.1.0",
-    "@types/underscore": "^1.9.2",
+    "@types/underscore": "^1.9.2"
+  },
+  "dependencies": {
     "net": "^1.0.2",
     "optimist": "^0.6.1",
     "punycode": "^2.1.1",
