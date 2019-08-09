@@ -28,7 +28,13 @@
     "mocha": "^5.2.0"
   },
   "dependencies": {
+    "@types/node": "^12.7.1",
+    "@types/optimist": "0.0.29",
+    "@types/punycode": "^2.1.0",
+    "@types/underscore": "^1.9.2",
+    "net": "^1.0.2",
     "optimist": "^0.6.1",
+    "punycode": "^2.1.1",
     "socks": "^2.2.2",
     "underscore": "^1.9.1"
   }
