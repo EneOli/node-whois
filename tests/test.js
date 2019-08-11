@@ -192,9 +192,9 @@ describe('#lookup()', function () {
 
   it('should fail with google.com due to timeout', (done) => {
     whois.lookup('google.com', {timeout: 1}).then((data) => {
-      assert.strictEqual('lookup: timeout', err.message);
       return done();
     }).catch((err) => {
+      assert.strictEqual('lookup: timeout', err.message);
       assert(err);
       return done();
     })
