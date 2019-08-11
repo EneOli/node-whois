@@ -3,7 +3,8 @@ const assert = require('assert');
 const whois = require('../dist/lib/index');
 
 describe('#lookup()', function () {
-  this.timeout(5000);
+  console.log('----- WATCH YOUR DAILY LIMIT! ------')
+  this.timeout(10000);
   it('should work with google.com', (done) => {
     whois.lookup('google.com').then((data) => {
       assert.notStrictEqual(data.toLowerCase().indexOf('domain name: google.com'), -1);
