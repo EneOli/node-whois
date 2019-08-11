@@ -27,7 +27,9 @@
     "@types/node": "^12.7.1",
     "@types/optimist": "0.0.29",
     "@types/punycode": "^2.1.0",
-    "@types/underscore": "^1.9.2"
+    "@types/underscore": "^1.9.2",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "net": "^1.0.2",
