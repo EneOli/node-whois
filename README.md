@@ -1,6 +1,5 @@
-# Node WHOIS
+# Node WHOIS [![Build Status](https://travis-ci.org/EneOli/node-whois.svg?branch=master)](https://travis-ci.org/EneOli/node-whois)
 
-[![Build Status](https://drone.io/github.com/hjr265/node-whois/status.png)](https://drone.io/github.com/hjr265/node-whois/latest)
 
 Node WHOIS is a WHOIS client for Node.js.
 
