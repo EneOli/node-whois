@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "mocha tests/"
+    "test": "npm run build && mocha tests/"
   },
   "repository": {
     "type": "git",
