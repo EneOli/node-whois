@@ -2,13 +2,14 @@
   "name": "whois-promises",
   "version": "1.0.0",
   "description": "A WHOIS client for NodeJS using Promises",
-  "main": "index.js",
+  "main": "index.ts",
+  "types": "dist/index.d.ts",
   "bin": {
-    "whois": "index.js"
+    "whois": "index.ts"
   },
   "scripts": {
     "build": "tsc",
-    "test": "echo TODO && exit 1"
+    "test": "mocha tests/"
   },
   "repository": {
     "type": "git",
