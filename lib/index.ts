@@ -124,8 +124,6 @@ export async function lookup(addr: string, options: Options = {}): Promise<strin
           {type: 5});
     }
 
-    console.log(server);
-
     async function _lookup(socket: Socket) {
       let idn = addr;
       if ((server.punycode) && (options.punycode)) {
