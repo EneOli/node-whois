@@ -6,7 +6,7 @@ import {Socket} from 'net';
 import {SocksClientEstablishedEvent, SocksProxyType} from 'socks/typings/common/constants';
 import * as optimist from 'optimist';
 
-import * as SERVERS from '../servers.json';
+import SERVERS from './Servers';
 
 const REGEX_TEXT_BEFORE_TLD = /^.+?(\.|$)/;
 const REGEX_MATCH = /(ReferralServer|Registrar Whois|Whois Server|WHOIS Server|Registrar WHOIS Server):[^\S\n]*((?:r?whois|https?):\/\/)?(.*)/;
@@ -35,9 +35,10 @@ interface Options {
   punycode?: boolean;
 }
 
-export async function lookup(addr: string, options: Options = {}): Promise<any> {
-  return new Promise(async (resolve: (value?: any | PromiseLike<any>) => void, reject: (reason?: any) => void) => {
-    let parts: string[] | any;
+export async function lookup(addr: string, options: Options = {}): Promise<string | { server: string, data: string }[]> {
+  return new Promise<{ server: string, data: string }[] | string>
+  (async (resolve: (value?: string | PromiseLike<string> | { server: string, data: string }[]) => void,
+          reject: (reason?: Error) => void) => {
 
     _.defaults(options, {
           follow: 2,
@@ -104,10 +105,10 @@ export async function lookup(addr: string, options: Options = {}): Promise<any> 
     }
 
     if (proxy && typeof proxy === 'string') {
-      parts = ('' + proxy).split(':');
+      const splitted = ('' + proxy).split(':');
       proxy = {
-        ipaddress: parts[0],
-        port: parseInt(parts[1], 10),
+        ipaddress: splitted[0],
+        port: parseInt(splitted[1], 10),
         type: 5,
       };
     }
@@ -122,6 +123,8 @@ export async function lookup(addr: string, options: Options = {}): Promise<any> 
       _.defaults(proxy,
           {type: 5});
     }
+
+    console.log(server);
 
     async function _lookup(socket: Socket) {
       let idn = addr;
@@ -162,7 +165,7 @@ export async function lookup(addr: string, options: Options = {}): Promise<any> 
                       server: server.host.trim(),
                       data,
                     },
-                    ].concat(parts),
+                    ],
                 );
               } else {
                 resolve(data);
@@ -268,16 +271,12 @@ if (module === require.main) {
     proxy: optimist.argv.proxy,
     verbose: optimist.argv.verbose,
     bind: optimist.argv.bind,
-  }).then((data: any[] | string) => {
+  }).then((data: { server: string, data: string }[] | string) => {
     if (_.isArray(data)) {
       return (() => {
         const result = [];
         for (const part of data) {
-          if (typeof part.server === 'object') {
-            console.log(part.server.host);
-          } else {
-            console.log(part.server);
-          }
+          console.log(part.server);
           console.log(part.data);
           result.push(console.log);
         }
