@@ -1,6 +1,6 @@
 const _ = require('underscore');
 const assert = require('assert');
-const whois = require('../dist/lib/index');
+const whois = require('../dist/index');
 
 describe('#lookup()', function () {
   console.log('----- WATCH YOUR DAILY LIMIT! ------')
